@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,103 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Map_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9qG-e4-NzU">
+                                <rect key="frame" x="0.0" y="78" width="414" height="524"/>
+                            </mapView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="11" minValue="-90" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="aF5-Da-s8w">
+                                <rect key="frame" x="18" y="622" width="378" height="31"/>
+                                <connections>
+                                    <action selector="latitudeSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="HRO-Mu-eIk"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="18.5" minValue="-180" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="qTE-ep-S8d">
+                                <rect key="frame" x="18" y="702" width="378" height="31"/>
+                                <connections>
+                                    <action selector="longitudeSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="WKh-Eb-9ec"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqy-oz-UEK">
+                                <rect key="frame" x="40" y="812" width="31" height="30"/>
+                                <state key="normal" title="決定"/>
+                                <connections>
+                                    <action selector="decideButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W2o-hI-3A2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMn-eN-xG4">
+                                <rect key="frame" x="343" y="812" width="31" height="30"/>
+                                <state key="normal" title="変更"/>
+                                <connections>
+                                    <action selector="changeMapStyleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PKn-kS-NGS"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aq9-zm-3hL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-hk-Cew">
+                                <rect key="frame" x="100" y="657" width="214" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Oz-mf-QCN">
+                                <rect key="frame" x="100" y="737" width="214" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qTE-ep-S8d" secondAttribute="trailing" constant="20" id="2nC-QO-rxm"/>
+                            <constraint firstItem="XMn-eN-xG4" firstAttribute="bottom" secondItem="Tqy-oz-UEK" secondAttribute="bottom" id="AcN-3e-ESC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Oz-mf-QCN" secondAttribute="trailing" constant="100" id="BMJ-c3-RZN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aq9-zm-3hL" secondAttribute="trailing" id="BxT-Qb-Jb6"/>
+                            <constraint firstItem="2Oz-mf-QCN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="IjY-Wh-7cB"/>
+                            <constraint firstItem="Tqy-oz-UEK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="KVm-hb-jOT"/>
+                            <constraint firstItem="aq9-zm-3hL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="M0A-Rc-UVq"/>
+                            <constraint firstItem="aF5-Da-s8w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OC9-4K-h3V"/>
+                            <constraint firstItem="9qG-e4-NzU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Pt3-vE-2ln"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H5c-hk-Cew" secondAttribute="trailing" constant="100" id="PzW-bh-tRu"/>
+                            <constraint firstItem="aF5-Da-s8w" firstAttribute="top" secondItem="9qG-e4-NzU" secondAttribute="bottom" constant="20" id="QZ0-l5-74I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XMn-eN-xG4" secondAttribute="trailing" constant="40" id="XQx-0p-P6r"/>
+                            <constraint firstItem="aF5-Da-s8w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ZfH-8e-JPu"/>
+                            <constraint firstItem="2Oz-mf-QCN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cbV-yn-oSQ"/>
+                            <constraint firstItem="H5c-hk-Cew" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="f26-GK-Ycs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aF5-Da-s8w" secondAttribute="trailing" constant="20" id="gVF-Rm-cYs"/>
+                            <constraint firstItem="aq9-zm-3hL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gvL-CB-n26"/>
+                            <constraint firstItem="H5c-hk-Cew" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lwj-sA-Hvx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XMn-eN-xG4" secondAttribute="bottom" constant="20" id="n0b-a1-ikX"/>
+                            <constraint firstItem="H5c-hk-Cew" firstAttribute="top" secondItem="aF5-Da-s8w" secondAttribute="bottom" constant="5" id="p7X-CE-Ryr"/>
+                            <constraint firstItem="9qG-e4-NzU" firstAttribute="top" secondItem="aq9-zm-3hL" secondAttribute="bottom" id="pPP-AM-k5M"/>
+                            <constraint firstItem="2Oz-mf-QCN" firstAttribute="top" secondItem="qTE-ep-S8d" secondAttribute="bottom" constant="5" id="pco-RP-664"/>
+                            <constraint firstItem="qTE-ep-S8d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qLg-Uj-knh"/>
+                            <constraint firstItem="Tqy-oz-UEK" firstAttribute="top" secondItem="qTE-ep-S8d" secondAttribute="bottom" constant="80" id="rA5-lF-VbJ"/>
+                            <constraint firstItem="qTE-ep-S8d" firstAttribute="top" secondItem="aF5-Da-s8w" secondAttribute="bottom" constant="50" id="rov-By-p0E"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Tqy-oz-UEK" secondAttribute="bottom" constant="20" id="sJt-gG-wtN"/>
+                            <constraint firstItem="9qG-e4-NzU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sde-gX-Zdi"/>
+                            <constraint firstItem="qTE-ep-S8d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xrs-Em-myS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="latitudeLabel" destination="H5c-hk-Cew" id="D5v-fw-eCY"/>
+                        <outlet property="latitudeSlider" destination="aF5-Da-s8w" id="o5F-qP-ZvG"/>
+                        <outlet property="longitudeLabel" destination="2Oz-mf-QCN" id="Bag-8f-ssL"/>
+                        <outlet property="longitudeSlider" destination="qTE-ep-S8d" id="Mfh-yc-guf"/>
+                        <outlet property="mapView" destination="9qG-e4-NzU" id="22c-G4-MWr"/>
+                        <outlet property="textField" destination="aq9-zm-3hL" id="MeF-44-QGg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>

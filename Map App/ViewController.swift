@@ -35,10 +35,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let searchKey = textField.text!
         textField.resignFirstResponder()
         let geocoder = CLGeocoder()  //CLGeocoderのインスタンス化
-        geocoder.geocodeAddressString(searchKey, completionHandler: { (placemarks, error) in
+        geocoder.geocodeAddressString(searchKey, completionHandler: {(placemarks, error) in
             
             if let unwrapPlacemarks = placemarks {//複数の位置情報が格納された配列unrapPlacemarks
-                
                 if let firstPlacemark = unwrapPlacemarks.first {//unrapPlacemarksの先頭の要素を抜き出す
                     if let location = firstPlacemark.location {//firstPlacemarksのうち緯度経度情報のみを抜き出す
                         let targetCoordinate = location.coordinate
@@ -64,7 +63,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             
         })
-        return true
+        return true   //geocoder.geocodeAddressString の戻り値
         
     }
 
@@ -72,12 +71,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         latitudeValue = Float(sender.value)
         latitudeLabel.text = "緯度は\(latitudeValue!)です"
         print(Double(latitudeValue!))
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(Double(latitudeValue!),Double(longitudeValue!))
+        self.mapView.region = MKCoordinateRegion(center: location, latitudinalMeters: 500.0, longitudinalMeters: 500.0)
     }
     
     @IBAction func longitudeSlider(_ sender: UISlider) {
         longitudeValue = Float(sender.value)
         longitudeLabel.text = "経度は\(longitudeValue!)です"
         print(Double(longitudeValue!))
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(Double(latitudeValue!),Double(longitudeValue!))
+        self.mapView.region = MKCoordinateRegion(center: location, latitudinalMeters: 500.0, longitudinalMeters: 500.0)
     }
     @IBAction func decideButton(_ sender: Any) {
         let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(Double(latitudeValue!), Double(longitudeValue!))

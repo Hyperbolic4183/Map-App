@@ -18,7 +18,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9qG-e4-NzU">
                                 <rect key="frame" x="0.0" y="78" width="414" height="524"/>
                             </mapView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="11" minValue="-90" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="aF5-Da-s8w">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="11" minValue="-80" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="aF5-Da-s8w">
                                 <rect key="frame" x="18" y="622" width="378" height="31"/>
                                 <connections>
                                     <action selector="latitudeSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="HRO-Mu-eIk"/>
